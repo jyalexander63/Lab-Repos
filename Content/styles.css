@@ -1,7 +1,7 @@
 /* styles.css */
 
 /* CSS styles for the login form */
-.login-container {
+/* .login-container {
     max-width: 300px;
     margin: 0 auto;
     padding: 20px;
@@ -38,5 +38,44 @@
 
 .login-container input[type="submit"]:hover {
     background-color: #0056b3;
+} */
+
+/* CSS styles for the register form */
+form {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
 }
 
+form h2 {
+    text-align: center;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}

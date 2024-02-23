@@ -10,13 +10,15 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form action="your_login_handler.php" method="post">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
             <input type="submit" value="Login">
+            <p>Don't have an account? <a href="register.html">Register Here</a>!</p>
         </form>
     </div>
 
+    <!-- Link to jQuery and your custom JavaScript file -->
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script src="Scripts/login.js"></script>
 </body>

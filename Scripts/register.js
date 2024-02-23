@@ -1,73 +1,121 @@
-// register.js
+// Author: Jy Alexander
+// Student ID: 100902103
+// Date Completed: Feb 22 2024
+
+
+class User {
+    constructor(firstName, lastName, email, password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
+}
+
+// Define error messages as constants
+const ERROR_MESSAGES = {
+    minLength: (fieldName, minLength) => `${fieldName} must be at least ${minLength} characters long.`,
+    emailFormat: 'Invalid email format.',
+    passwordLength: 'Password must be at least 6 characters long.',
+    passwordMismatch: 'Passwords do not match.'
+};
+
+// Function to show error message
+function showError(message) {
+    $('#ErrorMessage').text(message).show();
+}
+
+// Function to hide error message
+function hideError() {
+    $('#ErrorMessage').hide();
+}
+
+// Validate minimum length
+function validateMinLength(value, fieldName, minLength) {
+    if (value.length < minLength) {
+        showError(ERROR_MESSAGES.minLength(fieldName, minLength));
+        return false;
+    }
+    return true;
+}
+
+// Validate email format using a regular expression
+function validateEmailFormat(email) {
+    // Check if the email length is at least 8 characters long
+    if (email.length < 8) {
+        showError(ERROR_MESSAGES.minLength('Email', 8));
+        return false;
+    }
+    // Check if the email contains the "@" symbol
+    if (email.indexOf('@') === -1) {
+        showError('Email must contain "@" symbol.');
+        return false;
+    }
+    // Check if the email matches the email pattern
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        showError(ERROR_MESSAGES.emailFormat);
+        return false;
+    }
+
+    return true;
+}
+
+// Validate password length
+function validatePasswordLength(password) {
+    if (password.length < 6) {
+        showError(ERROR_MESSAGES.passwordLength);
+        return false;
+    }
+    return true;
+}
+
+// Validate password match
+function validatePasswordMatch(password, confirmPassword) {
+    if (password !== confirmPassword) {
+        showError(ERROR_MESSAGES.passwordMismatch);
+        return false;
+    }
+    return true;
+}
+
 $(document).ready(function() {
-    // Function to show error message
-    function showError(message) {
-        $('#ErrorMessage').text(message).show();
-    }
-
-    // Function to hide error message
-    function hideError() {
-        $('#ErrorMessage').hide();
-    }
-
-    // Event listener for form submission
     $('#registerForm').submit(function(e) {
-        // Prevent default form submission
         e.preventDefault();
 
-        // Get the values of first name and last name
         var firstName = $('#firstName').val();
         var lastName = $('#lastName').val();
         var email = $('#email').val();
-        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         var password = $('#password').val();
         var confirmPassword = $('#confirmPassword').val();
 
-        // Check if the length of first name is less than 2 characters
-        if (firstName.length < 2) {
-            showError('First name must be at least 2 characters long.');
-            return; // Exit the function early if there's an error
-        }
-
-        // Check if the length of last name is less than 2 characters
-        if (lastName.length < 2) {
-            showError('Last name must be at least 2 characters long.');
-            return; // Exit the function early if there's an error
-        }
-
-        if (email.length <8) {
-            showError('Email must be at least 8 characters long.')
+        // Validate first name and last name
+        if (!validateMinLength(firstName, 'First name', 2) ||
+            !validateMinLength(lastName, 'Last name', 2)) {
             return;
         }
 
-        if (email.indexOf('@') === -1) {
-            showError('Email must contain "@" symbol.');
+        // Validate email format
+        if (!validateMinLength(email, 'Email', 8) || !validateEmailFormat(email)) {
             return;
         }
 
-        if (password.length < 6) {
-            showError('Password must be at least 6 characters long.');
+        // Validate password length and match
+        if (!validatePasswordLength(password) ||
+            !validatePasswordMatch(password, confirmPassword)) {
             return;
         }
 
-        if (password !== confirmPassword) {
-            showError('Passwords do not match.');
-            return;
-        }
-
-
-
-       /* if (!emailPattern.test(email)) {
-            showError('Invalid email format.');
-            return;
-        }
-        */
-
-        
+        // Create user instance, hide errors, and clear form
+        var user = new User(firstName, lastName, email, password);
 
         // If validation passes, hide the error message
         hideError();
+        
+        // Log the registered users data to the console
+        console.log("User registered:", user);
 
-        // Proceed with registration (submit the form or perform further actions)
+        // clear the input fields on the form
+        $('#registerForm')[0].reset();
     });
 });
