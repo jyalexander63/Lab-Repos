@@ -42,3 +42,11 @@ form input[type="submit"]:hover {
 .already-have-account {
     text-align: center;
 }
+
+#project,
+#services,
+#about,
+#contact{
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
