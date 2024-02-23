@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="./Content/styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="your_login_handler.php" method="post">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="Scripts/login.js"></script>
+</body>
+</html>

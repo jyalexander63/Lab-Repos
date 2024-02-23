@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <div id="ErrorMessage" style="display: none;"></div>
+
+    <form id="registerForm">
+        <input type="text" id="firstName" name="firstName" placeholder="First Name">
+        <input type="text" id="lastName" name="lastName" placeholder="Last Name">
+        <input type="text" id="email" name="email" placeholder="Email">
+        <input type="password" id="password" name="password" placeholder="Password">
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
+
+        <button type="submit">Register</button>
+    </form>
+    
+    <!-- Include jQuery -->
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- Your custom JavaScript -->
+    <script src="Scripts/register.js"></script>
+</body>
+</html>
