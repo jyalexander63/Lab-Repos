@@ -36,12 +36,12 @@
          * This replaces the current Routing Table with a new one
          * Routes should begin with / character
          *
-         * @param {string[]} routingTable
+         * @param {string} routingTable
          * @returns {void}
          */
         AddTable(routingTable) 
         {
-            this.m_routingTable = routingTable.concat(['task-list']);
+            this.m_routingTable = routingTable;
         }
 
         /**
@@ -96,7 +96,8 @@ router.AddTable(["/",
                  "/projects", 
                  "/register", 
                  "/login", 
-                 "/edit"]);
+                 "/edit",
+                 "/task-list"]);
                 
 let route = location.pathname; // alias for location.pathname
 
